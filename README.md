@@ -26,12 +26,12 @@ _Each player rolls a die until they either roll a 1 or decide to "hold". The fir
 
 ## Test
 
-  *_Describe: diceRoll()
+  * _Describe: diceRoll()
     Test: It will return a random whole number between 1 - 6
     Code: diceRoll()
     Expected Output: 1 or 2 or 3 or 4 or 5 or 6
 
-  *_Describe: Player()
+  * _Describe: Player()
     Test: It will create Player {}
     Code: Player()
     Expected Output: {turnTotal: 0, scoreTotal: 0}
@@ -48,14 +48,10 @@ _Each player rolls a die until they either roll a 1 or decide to "hold". The fir
     Code: player.roll(1)
     Expected Output: {turnTotal: 0, scoreTotal: 5}    
 
-    Describe: winCheck(playerOne, PlayerTwo) 
-    Test: It will determine whether either player has turnTotal + scoreTotal:>= 100
+  * _Describe: winCheck(playerOne, PlayerTwo) 
+    Test: It will determine whether either player has turnTotal + scoreTotal: >= 100
     Code: winCheck(playerOne, playerTwo)
     Expected Output: playerOne, playerTwo, or false
-
-  *_Describe: Player
-
-
 
 ## Setup/Installation Requirements
 

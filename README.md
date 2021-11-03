@@ -55,12 +55,12 @@ _Each player rolls a die until they either roll a 1 or decide to "hold". The fir
 
 ## Setup/Installation Requirements
 
-* _Navigate to https://github.com/Christinamawel/pig-dice_
+* _Navigate to https://github.com/Christinamawel/Pig-Dice_
 * _Click on the green "Code" button and copy the repository URL or click on the copy button_
 * _Open the terminal on your desktop_
 * _Once in the terminal, use it to navigate to your desktop folder_
-* _Once inside your desktop folder, use the command "git clone https://github.com/Christinamawel/pig-dice.git"_
-* _After cloning the project, navigate into it using the command "cd pig-dice"_
+* _Once inside your desktop folder, use the command "git clone https://github.com/Christinamawel/Pig-Dice.git"_
+* _After cloning the project, navigate into it using the command "cd Pig-Dice"_
 * _Use the command "git remote" to confirm the creation of the new local repository_
 * _Open the project with the code editor of your choice_
 

@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Fruktur&display=swap');
+
+body {
+  font-family: 'Fruktur', Arial, Helvetica, sans-serif;
+  background-color: pink;
+  text-align: center;
+}
+
+.container {
+  margin: 1em auto;
+  background-color: white;
+  padding: 1em 1em 0 1em;
+  border-radius: 1em;
+}
+
+#glasses-pig {
+  width: 100%;
+  border-radius: 1em;
+  border: .5em black double;
+}
+
+h1 {
+  font-size: 5rem;
+  padding-left: .5em;
+}
+
+h2 {
+  padding-top: .5em;
+}
+
+h3 {
+  padding-top: .5em;
+}
+
+#player-two-turn {
+  display: none;
+}
+
+#turn-total {
+  display: none;
+}
+
+button {
+  border: none;
+  background-color: pink;
+  margin: 0 1em;
+  padding: .5em 1em;
+  border-radius: .5em;
+}
+
+button:hover {
+  background-color: black;
+  color: pink;
+}
+
+#totals {
+  margin-top: 1em;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.total-num {
+  font-size: 5rem;
+}
+
+#player-win-div{
+  display: none;
+}
+
+#win-message {
+  color: rgb(134, 60, 73);
+}
+
+#play-again-btn {
+  font-size: 1.5rem;
+  margin: 1em;
+}
+
+.die {
+  display: none;
+  margin: 0 auto;
+}
+
+#confetti {
+  background-size: cover;
+}

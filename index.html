@@ -11,20 +11,45 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Pig Dice</h1>
-  <h2>See who can make it to 100 points first!</h2>
-  <img src="img/dice-one.png" alt="dice showing one">
-  <img src="img/dice-two.png" alt="dice showing two">
-  <img src="img/dice-three.png" alt="dice showing three">
-  <img src="img/dice-four.png" alt="dice showing four">
-  <img src="img/dice-five.png" alt="dice showing five">
-  <img src="img/dice-six.png" alt="dice showing six">
-  <h2>Player one's turn!</h2>
-  <h2>Player two's turn!</h2>
-  <h3>Total possible hold for this turn:<span id="current-hold"></span></h3>
-  <button id="roll">Roll</button>
-  <button id="hold">hold</button>
-  <h3>Player One Total: <span id="one-total">0</span></h3>
-  <h3>Player Two Total: <span id="two-total">0</span></h3>
+  <div class="container">
+    <div id="page-head">
+      <h1>Pig Dice</h1>
+      <img id="glasses-pig" src="img/pig.jpg" alt="picture of a pig with glasses">
+    </div>
+    <div id="confetti">
+      <h2>See who can make it to 100 points first!</h2>
+      <img id="die-one" class="die" src="img/dice-one.png" alt="dice showing one">
+      <img id="die-two" class="die" src="img/dice-two.png" alt="dice showing two">
+      <img id="die-three" class="die" src="img/dice-three.png" alt="dice showing three">
+      <img id="die-four" class="die" src="img/dice-four.png" alt="dice showing four">
+      <img id="die-five" class="die" src="img/dice-five.png" alt="dice showing five">
+      <img id="die-six" class="die" src="img/dice-six.png" alt="dice showing six">
+      <div id="player-one-turn">
+        <h2>Player one's turn!</h2>
+        <button class="play-btn" id="roll-one">Roll</button>
+        <button class="play-btn" id="hold-one">Hold</button>
+      </div>
+      <div id="player-two-turn">
+        <h2>Player two's turn!</h2>
+        <button class="play-btn" id="roll-two">Roll</button>
+        <button class="play-btn" id="hold-two">Hold</button>
+      </div>
+      <h3 id="turn-total">Total possible hold for this turn: <span id="current-hold"></span></h3>
+      <div id="totals">
+        <div>
+          <h3>Player One Total:</h3>
+          <div id="one-total" class="total-num">0</div>
+        </div>
+        <div>
+          <h3>Player Two Total:</h3>
+          <div id="two-total" class="total-num">0</div>
+        </div>
+      </div>
+      <div id="player-win-div">
+        <h1 id="win-message"></h1>
+        <button id="play-again-btn">play again</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

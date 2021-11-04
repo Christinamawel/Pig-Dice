@@ -7,17 +7,38 @@ function diceRoll() {
 function Player() {
   this.turnTotal = 0;
   this.scoreTotal = 0;
-  this.currentRoll = 0;
+  this.currentDiceRollOne = 0;
+  this.currentDiceRollTwo = 0;
 }
 
 Player.prototype.roll = function() {
   let roll = diceRoll();
-  this.currentRoll = roll;
+  this.currentDiceRollOne = roll;
   if (roll != 1) {
     this.turnTotal += roll;
   } else {
     this.turnTotal = 0;
   }
+};
+
+Player.prototype.twoDice = function() {
+  let die1 = diceRoll();
+  let die2 = diceRoll();
+  this.currentDiceRollOne = die1;
+  this.currentDiceRollTwo = die2;
+  if (die1 != 1 && die2 != 1) {
+    this.turnTotal += (die1 + die2);
+  } else if (die1 === 1 && die2 === 1) {
+    this.turnTotal = 0;
+    this.scoreTotal = 0;
+  } else {
+    this.turnTotal = 0;
+  }
+
+  if (die1 === die2 && die1 != 1) {
+    return "Doubles!";
+  }
+
 };
 
 Player.prototype.hold = function() {
@@ -42,7 +63,7 @@ function winCheck(playerOne, playerTwo) {
 $(document).ready(function() {
   let playerOne = new Player();
   let playerTwo = new Player();
-  let turn = 1;
+  let gameMode = 0;
 
   const checkForWin = function() {
     if (winCheck(playerOne, playerTwo) === "Player one wins!") {
@@ -58,7 +79,7 @@ $(document).ready(function() {
 
   const displayRoll = function(player) {
     $(".die").hide();
-    switch (player.currentRoll) {
+    switch (player.currentDiceRollOne) {
       case (1):
         $("#die-one").fadeIn();
         break;
@@ -78,60 +99,122 @@ $(document).ready(function() {
         $("#die-six").fadeIn();
         break;
     }
+    
+    if (player.currentDiceRollTwo) {
+      switch (player.currentDiceRollTwo) {
+        case (1):
+          $("#die-two-one").fadeIn();
+          break;
+        case (2):
+          $("#die-two-two").fadeIn();
+          break;
+        case (3):
+          $("#die-two-three").fadeIn();
+          break;
+        case (4):
+          $("#die-two-four").fadeIn();
+          break;
+        case (5):
+          $("#die-two-five").fadeIn();
+          break;
+        case (6):
+          $("#die-two-six").fadeIn();
+          break;
+      }
+    }
   }
 
   function turnRoll(player) {
     player.roll();
     displayRoll(player);
     checkForWin()
-  }
-  
-  $("#roll-one").click(function(event) {
-    turnRoll(playerOne)
-    if (playerOne.turnTotal === 0) {
-      turn = 2;
-      $("#player-two-turn").fadeIn();
-      $("#player-one-turn").hide();
+    if (player.turnTotal === 0) {
+      $("#player-one-turn").toggle();
+      $("#player-two-turn").toggle();
       $("#turn-total").hide();
     } else {
       $("#turn-total").show();
-      $("#current-hold").text(playerOne.turnTotal.toString());
+      $("#current-hold").text(player.turnTotal.toString());
+    }
+  }
+
+  function hold(player) {
+    player.hold()
+    $("#player-two-turn").toggle();
+    $("#player-one-turn").toggle();
+    $("#turn-total").hide();
+  }
+
+  function rollTwo(player) {
+    const twoDiceRoll = player.twoDice();
+    $(".hold").show();
+    displayRoll(player);
+    if (player.turnTotal === 0) {
+      $("#player-one-turn").toggle();
+      $("#player-two-turn").toggle();
+      $("#turn-total").hide();
+    } else if(twoDiceRoll) {
+      $(".hold").hide();
+      $("#turn-total").show();
+      $("#current-hold").text(player.turnTotal.toString());
+    } else {
+      $("#turn-total").show();
+      $("#current-hold").text(player.turnTotal.toString());
+    }
+  }
+
+  function reset() {
+    playerOne.turnTotal = 0;
+    playerOne.scoreTotal = 0;
+    playerTwo.turnTotal = 0;
+    playerTwo.scoreTotal = 0;
+    $("#game").show();
+    $("#one-total").text(playerOne.scoreTotal.toString());
+    $("#two-total").text(playerTwo.scoreTotal.toString());
+    $(".die").hide();
+  }
+
+  $("#one-dice").click(function(event) {
+    reset();
+    gameMode = 1;
+    $("#rulesTwoDice").hide();
+    $("#rulesOneDice").show();
+  });
+
+  $("#two-dice").click(function(event) {
+    reset();
+    gameMode = 2;
+    $("#rulesOneDice").hide();
+    $("#rulesTwoDice").show();
+  });
+  
+  $("#roll-one").click(function(event) {
+    if (gameMode === 1) {
+      turnRoll(playerOne);
+    } else {
+      rollTwo(playerOne);
+    }
+  });
+
+  $("#roll-two").click(function(event) {
+    if (gameMode === 1) {
+      turnRoll(playerTwo);
+    } else {
+      rollTwo(playerTwo);
     }
   });
 
   $("#hold-one").click(function(event) {
-    turn = 2;
-    playerOne.hold()
+    hold(playerOne)
     $("#one-total").text(playerOne.scoreTotal.toString());
-    $("#player-two-turn").fadeIn();
-      $("#player-one-turn").hide();
-      $("#turn-total").hide();
-  });
-  
-  $("#roll-two").click(function(event) {
-    turnRoll(playerTwo);
-    if (playerTwo.turnTotal === 0) {
-      turn = 1;
-      $("#player-one-turn").fadeIn();
-      $("#player-two-turn").hide();
-      $("#turn-total").hide();
-    } else {
-      $("#turn-total").show();
-      $("#current-hold").text(playerTwo.turnTotal.toString());
-    }
   });
 
   $("#hold-two").click(function(event) {
-    turn = 1;
-    playerTwo.hold()
+    hold(playerTwo)
     $("#two-total").text(playerTwo.scoreTotal.toString());
-    $("#player-one-turn").fadeIn();
-      $("#player-two-turn").hide();
-      $("#turn-total").hide();
   });
 
   $("#play-again-btn").click(function(){
     location.reload();
-  })
-  
-})
+  });
+});

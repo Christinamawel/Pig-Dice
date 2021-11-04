@@ -95,10 +95,19 @@ button:hover {
   background-size: cover;
 }
 
-#rules li {
+.rules li {
   list-style-image: url("/img/clear-dice-icon.jpg");
   font-size: 1.25rem;
   text-align: left;
   padding-bottom: 0.5em;
   font-family: 'Roboto', sans-serif;
+}
+.rules-btn {
+  font-size: 1.5rem;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+div#game {
+  display: none;
 }

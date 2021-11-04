@@ -16,46 +16,66 @@
       <h1>Pig Dice</h1>
       <img id="glasses-pig" src="img/pig.jpg" alt="picture of a pig with glasses">
     </div>
-    <div id="confetti">
       <h2>See who can make it to 100 points first!</h2>
-      <div id="rules">
-        <ul>
-          <li>Each player rolls a die until they either roll a 1 or decide to "hold". The first player to score at least 100 points wins.</li>
-          <li>If the player rolls a 1, they score nothing and it becomes the next player's turn.</li>
-          <li>If the player rolls any other number, it is added to their turn total and the player's turn continues.</li>
-          <li>If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.</li>
-        </ul>
-      </div>
-      <img id="die-one" class="die" src="img/dice-one.png" alt="dice showing one">
-      <img id="die-two" class="die" src="img/dice-two.png" alt="dice showing two">
-      <img id="die-three" class="die" src="img/dice-three.png" alt="dice showing three">
-      <img id="die-four" class="die" src="img/dice-four.png" alt="dice showing four">
-      <img id="die-five" class="die" src="img/dice-five.png" alt="dice showing five">
-      <img id="die-six" class="die" src="img/dice-six.png" alt="dice showing six">
-      <div id="player-one-turn">
-        <h2>Player <span class="player-one-color">one</span>'s turn!</h2>
-        <button class="play-btn" id="roll-one">Roll</button>
-        <button class="play-btn" id="hold-one">Hold</button>
-      </div>
-      <div id="player-two-turn">
-        <h2>Player <span class="player-two-color">two</span>'s turn!</h2>
-        <button class="play-btn" id="roll-two">Roll</button>
-        <button class="play-btn" id="hold-two">Hold</button>
-      </div>
-      <h3 id="turn-total">Total possible hold for this turn: <span id="current-hold"></span></h3>
-      <div id="totals">
-        <div>
-          <h3>Player <span class="player-one-color">One</span> Total:</h3>
-          <div id="one-total" class="total-num">0</div>
+      <button id="one-dice" class="rules-btn">Play with One Die</button>
+      <button id="two-dice" class="rules-btn">Play with Two Dice</button>
+      <div id="game">
+        <div class="rules" id="rulesOneDice">
+          <ul>
+            <li>Each player rolls a die until they either roll a 1 or decide to "hold". The first player to score at least 100 points wins.</li>
+            <li>If the player rolls a 1, they score nothing and it becomes the next player's turn.</li>
+            <li>If the player rolls any other number, it is added to their turn total and the player's turn continues.</li>
+            <li>If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.</li>
+          </ul>
         </div>
-        <div>
-          <h3>Player <span class="player-two-color">Two</span> Total:</h3>
-          <div id="two-total" class="total-num">0</div>
+        <div class ="rules" id="rulesTwoDice">
+          <ul>
+            <li>Two standard dice are rolled. If neither shows a 1, their sum is added to the turn total. The first player to score at least 100 points wins.</li>
+            <li>If a single 1 is rolled, the player scores nothing and the turn ends.</li>
+            <li>If two 1s are rolled, the player’s <em>entire score</em> is lost, and the turn ends.</li>
+            <li>If a double is rolled, the point total is added to the turn total as with any roll but the player is obligated to roll again</li>
+          </ul>
         </div>
-      </div>
-      <div id="player-win-div">
-        <h1 id="win-message"></h1>
-        <button id="play-again-btn">play again</button>
+        <div id="images">
+          <img id="die-one" class="die" src="img/dice-one.png" alt="dice showing one">
+          <img id="die-two" class="die" src="img/dice-two.png" alt="dice showing two">
+          <img id="die-three" class="die" src="img/dice-three.png" alt="dice showing three">
+          <img id="die-four" class="die" src="img/dice-four.png" alt="dice showing four">
+          <img id="die-five" class="die" src="img/dice-five.png" alt="dice showing five">
+          <img id="die-six" class="die" src="img/dice-six.png" alt="dice showing six">
+          <img id="die-two-one" class="die" src="img/dice-one.png" alt="dice showing one">
+          <img id="die-two-two" class="die" src="img/dice-two.png" alt="dice showing two">
+          <img id="die-two-three" class="die" src="img/dice-three.png" alt="dice showing three">
+          <img id="die-two-four" class="die" src="img/dice-four.png" alt="dice showing four">
+          <img id="die-two-five" class="die" src="img/dice-five.png" alt="dice showing five">
+          <img id="die-two-six" class="die" src="img/dice-six.png" alt="dice showing six">
+        </div>
+        <div id="player-one-turn">
+          <h2>Player <span class="player-one-color">one</span>'s turn!</h2>
+          <button class="play-btn" id="roll-one">Roll</button>
+          <button class="play-btn hold" id="hold-one">Hold</button>
+        </div>
+        <div id="player-two-turn">
+          <h2>Player <span class="player-two-color">two</span>'s turn!</h2>
+          <button class="play-btn" id="roll-two">Roll</button>
+          <button class="play-btn hold" id="hold-two">Hold</button>
+        </div>
+        <h3 id="turn-total">Total possible hold for this turn: <span id="current-hold"></span></h3>
+        <div id="totals">
+          <div>
+            <h3>Player <span class="player-one-color">One</span> Total:</h3>
+            <div id="one-total" class="total-num">0</div>
+          </div>
+          <div>
+            <h3>Player <span class="player-two-color">Two</span> Total:</h3>
+            <div id="two-total" class="total-num">0</div>
+          </div>
+        </div>
+        <div id="confetti">
+          <div id="player-win-div">
+            <h1 id="win-message"></h1>
+            <button id="play-again-btn">play again</button>
+          </div>
       </div>
     </div>
   </div>

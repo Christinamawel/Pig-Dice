@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fruktur&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 body {
   font-family: 'Fruktur', Arial, Helvetica, sans-serif;
@@ -53,6 +54,14 @@ button:hover {
   color: pink;
 }
 
+.player-one-color {
+  color:rgb(170, 2, 2);
+}
+
+.player-two-color {
+  color:rgb(5, 5, 168);
+}
+
 #totals {
   margin-top: 1em;
   display: flex;
@@ -84,4 +93,12 @@ button:hover {
 
 #confetti {
   background-size: cover;
+}
+
+#rules li {
+  list-style-image: url("/img/clear-dice-icon.jpg");
+  font-size: 1.25rem;
+  text-align: left;
+  padding-bottom: 0.5em;
+  font-family: 'Roboto', sans-serif;
 }

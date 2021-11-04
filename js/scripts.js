@@ -1,6 +1,6 @@
 // Utility logic
 function diceRoll() {
-  return Math.floor(Math.random() * (5) + 1);
+  return Math.floor(Math.random() * 6 + 1);
 }
 
 // Business logic
@@ -14,7 +14,7 @@ Player.prototype.roll = function() {
   let roll = diceRoll();
   this.currentRoll = roll;
   if (roll != 1) {
-    this.turnTotal += diceRoll();
+    this.turnTotal += roll;
   } else {
     this.turnTotal = 0;
   }
@@ -57,30 +57,37 @@ $(document).ready(function() {
   }
 
   const displayRoll = function(player) {
-    if (player.currentRoll === 1) {
-      $(".die").hide();
-      $("#die-one").fadeIn();
-    } else if (player.currentRoll === 2) {
-      $(".die").hide();
-      $("#die-two").fadeIn();
-    } else if (player.currentRoll === 3) {
-      $(".die").hide();
-      $("#die-three").fadeIn();
-    } else if (player.currentRoll === 4) {
-      $(".die").hide();
-      $("#die-four").fadeIn();
-    } else if (player.currentRoll === 5) {
-      $(".die").hide();
-      $("#die-five").fadeIn();
-    } else if (player.currentRoll === 6) {
-      $(".die").hide();
-      $("#die-six").fadeIn();
+    $(".die").hide();
+    switch (player.currentRoll) {
+      case (1):
+        $("#die-one").fadeIn();
+        break;
+      case (2):
+        $("#die-two").fadeIn();
+        break;
+      case (3):
+        $("#die-three").fadeIn();
+        break;
+      case (4):
+        $("#die-four").fadeIn();
+        break;
+      case (5):
+        $("#die-five").fadeIn();
+        break;
+      case (6):
+        $("#die-six").fadeIn();
+        break;
     }
+  }
+
+  function turnRoll(player) {
+    player.roll();
+    displayRoll(player);
+    checkForWin()
   }
   
   $("#roll-one").click(function(event) {
-    playerOne.roll();
-    displayRoll(playerOne);
+    turnRoll(playerOne)
     if (playerOne.turnTotal === 0) {
       turn = 2;
       $("#player-two-turn").fadeIn();
@@ -90,7 +97,6 @@ $(document).ready(function() {
       $("#turn-total").show();
       $("#current-hold").text(playerOne.turnTotal.toString());
     }
-    checkForWin();
   });
 
   $("#hold-one").click(function(event) {
@@ -103,8 +109,7 @@ $(document).ready(function() {
   });
   
   $("#roll-two").click(function(event) {
-    playerTwo.roll();
-    displayRoll(playerTwo);
+    turnRoll(playerTwo);
     if (playerTwo.turnTotal === 0) {
       turn = 1;
       $("#player-one-turn").fadeIn();
@@ -113,7 +118,6 @@ $(document).ready(function() {
     } else {
       $("#turn-total").show();
       $("#current-hold").text(playerTwo.turnTotal.toString());
-      console.log(playerTwo);
     }
   });
 

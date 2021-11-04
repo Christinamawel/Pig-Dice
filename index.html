@@ -18,6 +18,14 @@
     </div>
     <div id="confetti">
       <h2>See who can make it to 100 points first!</h2>
+      <div id="rules">
+        <ul>
+          <li>Each player rolls a die until they either roll a 1 or decide to "hold". The first player to score at least 100 points wins.</li>
+          <li>If the player rolls a 1, they score nothing and it becomes the next player's turn.</li>
+          <li>If the player rolls any other number, it is added to their turn total and the player's turn continues.</li>
+          <li>If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.</li>
+        </ul>
+      </div>
       <img id="die-one" class="die" src="img/dice-one.png" alt="dice showing one">
       <img id="die-two" class="die" src="img/dice-two.png" alt="dice showing two">
       <img id="die-three" class="die" src="img/dice-three.png" alt="dice showing three">
@@ -25,23 +33,23 @@
       <img id="die-five" class="die" src="img/dice-five.png" alt="dice showing five">
       <img id="die-six" class="die" src="img/dice-six.png" alt="dice showing six">
       <div id="player-one-turn">
-        <h2>Player one's turn!</h2>
+        <h2>Player <span class="player-one-color">one</span>'s turn!</h2>
         <button class="play-btn" id="roll-one">Roll</button>
         <button class="play-btn" id="hold-one">Hold</button>
       </div>
       <div id="player-two-turn">
-        <h2>Player two's turn!</h2>
+        <h2>Player <span class="player-two-color">two</span>'s turn!</h2>
         <button class="play-btn" id="roll-two">Roll</button>
         <button class="play-btn" id="hold-two">Hold</button>
       </div>
       <h3 id="turn-total">Total possible hold for this turn: <span id="current-hold"></span></h3>
       <div id="totals">
         <div>
-          <h3>Player One Total:</h3>
+          <h3>Player <span class="player-one-color">One</span> Total:</h3>
           <div id="one-total" class="total-num">0</div>
         </div>
         <div>
-          <h3>Player Two Total:</h3>
+          <h3>Player <span class="player-two-color">Two</span> Total:</h3>
           <div id="two-total" class="total-num">0</div>
         </div>
       </div>

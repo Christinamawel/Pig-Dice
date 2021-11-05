@@ -149,6 +149,7 @@ $(document).ready(function() {
     const twoDiceRoll = player.twoDice();
     $(".hold").show();
     displayRoll(player);
+    checkForWin()
     if (player.turnTotal === 0) {
       $("#player-one-turn").toggle();
       $("#player-two-turn").toggle();
